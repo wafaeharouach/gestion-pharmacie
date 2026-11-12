@@ -1,0 +1,18 @@
+services:
+
+  app:
+    build: webapp
+    container_name: pharmacie_app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:7
+    container_name: pharmacie_mongodb
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
